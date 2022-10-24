@@ -9,14 +9,13 @@ def caesar_cipher(mode, text, shift):
     output = ""
     if mode == "decode":
         shift *= -1
-    shift %= len(alphabet)
     for char in text:
         if not char.isalpha():
             output += char
         else:
             for pos in range(len(alphabet)):
                 if alphabet[pos] == char:
-                    new_position = (pos + shift)
+                    new_position = (pos + shift) % len(alphabet)
                     output += alphabet[new_position]
     return output
 
